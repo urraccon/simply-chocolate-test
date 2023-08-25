@@ -66,10 +66,11 @@
   row-gap: 1.25rem;
 }
 
-.cube-face > div {
+.ing-card-side {
   padding: 1.75rem;
-  width: 13.4rem;
-  height: 13.4rem;
+  width: 16.9rem;
+  height: 16.9rem;
+  box-sizing: border-box;
   border-radius: 0.9375rem;
 }
 
@@ -116,21 +117,14 @@
   bottom: 1.75rem;
 }
 
-/* .back {
-  display: none;
-} */
-
 /* back cards */
 
-/* .front {
-  display: none;
-} */
-
-.back {
+.back-content-box {
   display: flex;
   flex-direction: column;
   row-gap: 0.87rem;
-  border: 4px solid green;
+  height: 100%;
+  overflow: hidden;
   background-color: white;
 }
 
@@ -189,52 +183,7 @@
   color: var(--dark-text-color);
 }
 
-/* cards animation */
-
-.cube {
-  width: 16.9rem;
-  height: 16.9rem;
-  perspective: 50rem;
-  perspective-origin: 50%;
-}
-
-.cube-face {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  position: relative;
-  transition: 2s;
-}
-
-.cube-face div {
-  position: absolute;
-  transform: translateZ(0);
-}
-
-.front {
-  transform: translateZ(8.45rem);
-}
-
-.back {
-  transform: translateZ(-8.45rem) rotateY(180deg);
-}
-
-/* mobile version */
-
-/* @media screen and (min-width: 375px) {
-  .cube-face div {
-    width: 20.9375rem;
-    height: 16.875rem;
-  }
-
-  .nuts > .ing-image {
-    width: 14rem;
-  }
-
-  .ing-image {
-    height: 10.6875rem;
-  }
-} */
+/* tablet version */
 
 @media screen and (min-width: 768px) {
   .ings-list {
@@ -260,19 +209,62 @@
   }
 }
 
+/* desktop version */
+
 @media screen and (min-width: 1200px) {
   .ings-list {
     gap: 1.1rem;
   }
 
-  .cube-face div {
+  .ing-card-side {
     padding-right: 2.25rem;
-    width: 12.9rem;
-    box-sizing: content-box;
-    height: 13.4rem;
+  }
+
+  .back-content-box {
+    width: 100%;
+    height: 100%;
   }
 
   .nuts > .ing-image {
     width: 12.875rem;
   }
 }
+
+/* cards animation */
+
+.ing-card {
+  perspective: 50rem;
+  position: relative;
+  height: 16.9rem;
+  width: 16.9rem;
+}
+
+.ing-card-side {
+  backface-visibility: hidden;
+  transition: transform 0.8s ease-in-out;
+  position: absolute;
+  transform-style: preserve-3d;
+  top: 0;
+  left: 0;
+  scale: 0.83;
+}
+
+.ing-card-side.front {
+  transform: translateZ(8.45rem);
+}
+
+.ing-card-side.back {
+  transform: rotateY(-180deg) translateZ(8.45rem);
+}
+
+.ing-card:hover .ing-card-side.front {
+  transform: rotateY(180deg) translateZ(8.45rem);
+}
+
+.ing-card:hover .ing-card-side.back {
+  transform: rotateY(0deg) translateZ(8.45rem);
+}
+
+/* .threeD {
+  transform: translateZ(10rem);
+} */
