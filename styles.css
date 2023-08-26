@@ -252,6 +252,16 @@
   .ing-image.nuts {
     width: 12.875rem;
   }
+
+  .ing-front-side,
+  .ing-back-side {
+    width: 16.875rem;
+  }
+
+  .back-content {
+    width: 16.875rem;
+    padding: 1.25rem;
+  }
 }
 
 /* cards animation */
