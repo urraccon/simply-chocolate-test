@@ -68,18 +68,18 @@
 }
 
 .ing-image {
-  height: 10.715rem;
+  height: 10.6875rem;
 }
 
 .ing-image.nuts {
-  width: 13.4rem;
+  width: 14rem;
   height: fit-content;
   padding-bottom: 1.9rem;
 }
 
 .ing-card-front {
-  width: 16.9rem;
-  height: 16.9rem;
+  width: 20.9375rem;
+  height: 16.875rem;
   padding: 1.75rem;
   border-radius: 0.9375rem;
   box-sizing: border-box;
@@ -119,17 +119,18 @@
 
 /* back cards */
 
-.back {
-  padding: 1.25rem;
+.ing-card-back {
+  padding: 1.75rem;
   background-color: var(--light-bg-color);
+  height: 16.875rem;
+  width: 20.9375rem;
+  box-sizing: border-box;
 }
 
 .back-content {
   display: flex;
   flex-direction: column;
   row-gap: 0.87rem;
-  height: 14.375rem;
-  width: 14.375rem;
   overflow: hidden;
 }
 
@@ -232,7 +233,7 @@
 
 /* cards animation */
 
-.ing-card {
+/* .ing-card {
   perspective: 62.5rem;
   transform-style: preserve-3d;
   position: relative;
@@ -273,4 +274,4 @@
 .back-stand-out {
   transform: translateZ(4rem);
   scale: 0.9;
-}
+} */
