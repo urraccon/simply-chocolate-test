@@ -2,7 +2,7 @@
   --dark-text-color: #111;
   --orange: #fd9222;
   --dark-ing-card: #1e1823;
-  --white-benefit-card-bg: #fafafa;
+  --light-bg-color: #fafafa;
 }
 
 * {
@@ -19,6 +19,7 @@
   flex-direction: column;
   row-gap: 2rem;
   align-items: center;
+  background-color: var(--light-bg-color);
 }
 
 .uniq-comps-text {
@@ -66,69 +67,73 @@
   row-gap: 1.25rem;
 }
 
-.ing-card-side {
-  padding: 1.75rem;
-  width: 16.9rem;
-  height: 16.9rem;
-  box-sizing: border-box;
-  border-radius: 0.9375rem;
-}
-
 .ing-image {
   height: 10.715rem;
 }
 
-.nuts > .ing-image {
+.ing-image.nuts {
   width: 13.4rem;
   height: fit-content;
   padding-bottom: 1.9rem;
 }
 
+.ing-card-front {
+  width: 16.9rem;
+  height: 16.9rem;
+  padding: 1.75rem;
+  border-radius: 0.9375rem;
+  box-sizing: border-box;
+  border: 1px solid var(--orange);
+}
+
 .ing-text-card.light {
   color: white;
 }
+
 .ing-text-card.dark {
   color: var(--dark-text-color);
 }
 
-.front.orange {
+.ing-card-front.orange {
   background-color: var(--orange);
   border: none;
 }
 
-.front.black {
+.ing-card-front.black {
   background-color: var(--dark-ing-card);
   border: none;
 }
 
-.front {
-  border: 1px solid var(--orange);
+.ing-card-front.white {
+  background-color: var(--light-bg-color);
+}
+
+.front-content {
   display: flex;
   flex-direction: column;
   row-gap: 1.56rem;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  position: relative;
-}
-
-.nuts > .ing-text-card {
-  position: absolute;
-  left: 1.75rem;
-  bottom: 1.75rem;
+  height: 100%;
 }
 
 /* back cards */
 
-.back-content-box {
+.back {
+  padding: 1.25rem;
+  background-color: var(--light-bg-color);
+}
+
+.back-content {
   display: flex;
   flex-direction: column;
   row-gap: 0.87rem;
-  height: 100%;
+  height: 14.375rem;
+  width: 14.375rem;
   overflow: hidden;
-  background-color: white;
 }
 
-.ing-name {
+.benefit-name {
   color: var(--dark-text-color);
   font-size: 1.125rem;
   font-weight: 600;
@@ -142,44 +147,44 @@
   text-transform: none;
 }
 
-.benefit-cards {
+.ing-benefits {
   display: flex;
   column-gap: 0.38rem;
 }
 
-.benefit-titles {
+.highlighted-content {
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
 }
 
-.benefit-card {
+.ing-benefit {
   padding: 0.38rem 1rem;
   align-items: center;
   display: flex;
   border-radius: 2.1875rem;
 }
 
-.benefit-card.orange {
+.ing-benefit.orange {
   background-color: var(--orange);
 }
 
-.benefit-card-text {
+.ing-benefit-text {
   font-size: 0.625rem;
   font-weight: 400;
   line-height: 0.75rem;
 }
 
-.benefit-card.orange > .benefit-card-text {
+.ing-benefit.orange > .ing-benefit-text {
   color: white;
 }
 
-.benefit-card.white {
-  background-color: var(--white-benefit-card-bg);
+.ing-benefit.white {
+  background-color: var(--light-bg-color);
   border: 1px solid var(--orange);
 }
 
-.benefit-card.white > .benefit-card-text {
+.ing-benefit.white > .ing-benefit-text {
   color: var(--dark-text-color);
 }
 
@@ -220,12 +225,7 @@
     padding-right: 2.25rem;
   }
 
-  .back-content-box {
-    width: 100%;
-    height: 100%;
-  }
-
-  .nuts > .ing-image {
+  .ing-image.nuts {
     width: 12.875rem;
   }
 }
@@ -233,7 +233,8 @@
 /* cards animation */
 
 .ing-card {
-  perspective: 50rem;
+  perspective: 62.5rem;
+  transform-style: preserve-3d;
   position: relative;
   height: 16.9rem;
   width: 16.9rem;
@@ -243,28 +244,33 @@
   backface-visibility: hidden;
   transition: transform 0.8s ease-in-out;
   position: absolute;
-  transform-style: preserve-3d;
   top: 0;
   left: 0;
-  scale: 0.83;
+  scale: 0.9;
 }
 
 .ing-card-side.front {
-  transform: translateZ(8.45rem);
+  transform: translateZ(4rem);
 }
 
 .ing-card-side.back {
-  transform: rotateY(-180deg) translateZ(8.45rem);
+  transform: rotateY(-180deg) translateZ(4rem);
 }
 
 .ing-card:hover .ing-card-side.front {
-  transform: rotateY(180deg) translateZ(8.45rem);
+  transform: rotateY(180deg) translateZ(4rem);
 }
 
 .ing-card:hover .ing-card-side.back {
-  transform: rotateY(0deg) translateZ(8.45rem);
+  transform: rotateY(0deg) translateZ(4rem);
 }
 
-/* .threeD {
-  transform: translateZ(10rem);
-} */
+.face-stand-out {
+  transform: translateZ(4rem);
+  scale: 0.9;
+}
+
+.back-stand-out {
+  transform: translateZ(4rem);
+  scale: 0.9;
+}
