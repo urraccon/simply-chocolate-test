@@ -77,13 +77,12 @@
   padding-bottom: 1.9rem;
 }
 
-.ing-card-front {
-  width: 20.9375rem;
+.ing-front-side {
   height: 16.875rem;
-  padding: 1.75rem;
   border-radius: 0.9375rem;
   box-sizing: border-box;
   border: 1px solid var(--orange);
+  width: 17.5rem;
 }
 
 .ing-text-card.light {
@@ -94,17 +93,17 @@
   color: var(--dark-text-color);
 }
 
-.ing-card-front.orange {
+.ing-front-side.orange {
   background-color: var(--orange);
   border: none;
 }
 
-.ing-card-front.black {
+.ing-front-side.black {
   background-color: var(--dark-ing-card);
   border: none;
 }
 
-.ing-card-front.white {
+.ing-front-side.white {
   background-color: var(--light-bg-color);
 }
 
@@ -115,23 +114,28 @@
   justify-content: end;
   align-items: center;
   height: 100%;
+  width: 100%;
+  padding: 1.75rem;
+  box-sizing: border-box;
 }
 
 /* back cards */
 
-.ing-card-back {
-  padding: 1.75rem;
+.ing-back-side {
   background-color: var(--light-bg-color);
   height: 16.875rem;
-  width: 20.9375rem;
   box-sizing: border-box;
+  width: 17.5rem;
 }
 
 .back-content {
   display: flex;
   flex-direction: column;
   row-gap: 0.87rem;
-  overflow: hidden;
+  height: 100%;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .benefit-name {
@@ -146,6 +150,8 @@
   color: var(--dark-text-color);
   font-weight: 400;
   text-transform: none;
+  height: 9.125rem;
+  overflow: hidden;
 }
 
 .ing-benefits {
@@ -189,6 +195,19 @@
   color: var(--dark-text-color);
 }
 
+/* mobile version */
+
+@media screen and (min-width: 375px) {
+  .ing-front-side,
+  .ing-back-side {
+    width: 20.9375rem;
+  }
+
+  .back-content {
+    width: 20.9375rem;
+  }
+}
+
 /* tablet version */
 
 @media screen and (min-width: 768px) {
@@ -222,8 +241,12 @@
     gap: 1.1rem;
   }
 
-  .ing-card-side {
+  .front-content {
     padding-right: 2.25rem;
+  }
+
+  .ing-image {
+    height: 10rem;
   }
 
   .ing-image.nuts {
@@ -233,45 +256,51 @@
 
 /* cards animation */
 
-/* .ing-card {
-  perspective: 62.5rem;
-  transform-style: preserve-3d;
+.ing-card {
   position: relative;
-  height: 16.9rem;
-  width: 16.9rem;
 }
 
-.ing-card-side {
+.ing-sides {
+  transform-style: preserve-3d;
+  perspective: 63.5rem;
+}
+
+.ing-front-side,
+.ing-back-side {
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
   backface-visibility: hidden;
-  transition: transform 0.8s ease-in-out;
+}
+
+.ing-front-side {
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.ing-sides:hover .ing-front-side {
+  transform: rotateY(-180deg);
+  transform-style: preserve-3d;
+}
+
+.ing-back-side {
   position: absolute;
   top: 0;
   left: 0;
-  scale: 0.9;
+  transform: rotateY(-180deg);
+  transform-style: preserve-3d;
 }
 
-.ing-card-side.front {
-  transform: translateZ(4rem);
+.ing-sides:hover .ing-back-side {
+  /* transform: rotateY(0deg); */
+  transform-style: preserve-3d;
 }
 
-.ing-card-side.back {
-  transform: rotateY(-180deg) translateZ(4rem);
+.front-content,
+.back-content {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 50%;
+  perspective: inherit;
+  /* outline: 1px solid greenyellow; */
+  transform: translateY(-50%) translateZ(3.75rem) scale(0.94);
 }
-
-.ing-card:hover .ing-card-side.front {
-  transform: rotateY(180deg) translateZ(4rem);
-}
-
-.ing-card:hover .ing-card-side.back {
-  transform: rotateY(0deg) translateZ(4rem);
-}
-
-.face-stand-out {
-  transform: translateZ(4rem);
-  scale: 0.9;
-}
-
-.back-stand-out {
-  transform: translateZ(4rem);
-  scale: 0.9;
-} */
